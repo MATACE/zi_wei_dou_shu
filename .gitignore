@@ -1,6 +1,10 @@
 # Vscode
 # .vscode
 
+# Build file
+build
+demo/build
+
 # npm
 # node_modules
 # package.json

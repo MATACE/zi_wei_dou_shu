@@ -61,6 +61,7 @@ public:
     bool OpenDB(string db_path);
     bool CloseDB();
     bool NormaSqlExe(string sql_cmd);
+    bool QuickSqlExeExample();
 
 private:
    sqlite3 *db_handle_;

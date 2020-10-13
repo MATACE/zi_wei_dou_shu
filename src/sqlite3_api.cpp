@@ -115,5 +115,62 @@ bool Sqlite3Api::NormaSqlExe(string sql_cmd)
         DEBUG_INFO("SQL: exe " << sql_cmd << "successful");
         return true;
     }
+}
 
+bool Sqlite3Api::QuickSqlExeExample()
+{
+    if (db_handle_ == nullptr) {
+        LOG(ERROR) << "Data base is null";
+        return false;
+    }
+    
+    int ret = 0;
+
+    // The life cycle of a statement object goes through the following process:
+    // 1.Create this object using: sqlite3_prepare_v2()
+
+    // 2.Bind a value to the host parameters: sqlite3_bind_*()
+    // sqlite3 offer ? to be the not be sure value
+    // sql msg: insert into table values(?,?,?)
+    // first ?: sqlite3_bind_int(stmt, 1, value)
+    // second ?: sqlite3_bind_double(stmt, 2, value)
+    // three ?: sqlite3_bind_text(stmt, 3, value)
+
+    // 3.This sql is executed one or more times by calling sqlite3_step()
+
+    // 4.Reset the statement using sqlite3reset() and then go back to Step 2. Do this 0 or more times
+
+    // NOTE: The 3 step and 4 step can exchange, please read as flower example.
+
+    // 5.Destroy this object using SQlite3_finalize()
+
+    // The operation reason please visit https://www.cnblogs.com/rainbowzc/p/6444389.html.
+    
+    // Begin use business
+    sqlite3_exec(db_handle_, "begin;", NULL, NULL, NULL);
+    // Set write synchronous mode: FULL | NORMA | OFF
+    sqlite3_exec(db_handle_, "PRAGMA synchronous = OFF; ", NULL, NULL, NULL);
+    // Create execute peraper
+    sqlite3_stmt *stmt;
+    string sql_msg = "insert into table values(?, ?, ?, ?)";  
+    sqlite3_prepare_v2(db_handle_, sql_msg.c_str(), sql_msg.size(), &stmt, NULL);  
+    
+    int n_count = 64;
+    for(int i = 0; i < n_count; ++i)  
+    {         
+        sqlite3_reset(stmt);
+        // SQLITE_API int sqlite3_bind_int(sqlite3_stmt *p, int i, int iValue)
+        // p: The sqlite3_stmt object
+        // i: Which ? (When the ? is more)
+        // iValue: The value
+        sqlite3_bind_int(stmt, 1, i);  
+        sqlite3_bind_int(stmt, 2, i * 2);  
+        sqlite3_bind_int(stmt, 3, i / 2);  
+        sqlite3_bind_double(stmt, 4, i * i);  
+    }
+    // Free execute peraper
+    sqlite3_finalize(stmt);
+    // End use business
+    sqlite3_exec(db_handle_, "commit;", NULL, NULL, NULL);  
+    
 }
