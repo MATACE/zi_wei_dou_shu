@@ -1,0 +1,99 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "*.ipp": "cpp",
+        "csignal": "cpp",
+        "strstream": "cpp",
+        "unordered_set": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "slist": "cpp",
+        "future": "cpp",
+        "cfenv": "cpp",
+        "valarray": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "rope": "cpp",
+        "regex": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "csetjmp": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "atomic": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "cstdint": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "fstream": "cpp",
+        "initializer_list": "cpp",
+        "iomanip": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "numeric": "cpp",
+        "scoped_allocator": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "thread": "cpp",
+        "cinttypes": "cpp",
+        "utility": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp"
+    },
+    "git.ignoreLimitWarning": true,
+    "license-header-manager.additionalCommentStyles": [
+        {
+            "extension": [
+                // The need head license file, if add the cpp to the extension
+                // array the head file can't be rigth add.
+                ".h"
+            ],
+            // Control the head of file charcter.
+            "commentStart": "/** ",
+            "commentMiddle": " *",
+            "commentEnd": " */ ",
+        }
+    ],
+    "license-header-manager.excludeExtensions": [
+        // The need ignore need head license file
+        //".java",
+        // ".h",
+        ".sh",
+        ".c",
+        ".cpp"
+    ],
+    "license-header-manager.excludeFolders": [
+        // The need ignore need head license floader
+        "libs"
+    ]
+}
